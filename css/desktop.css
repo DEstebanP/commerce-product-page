@@ -77,7 +77,65 @@ main {
 .product-images-thumbnails img {
     width: 74px;
     border-radius: 8px;
+    cursor: pointer;
 }
+.product-images-thumbnails img:hover {
+    opacity: 50%;
+}
+
+/* Carousel products images */
+.product-images-lightbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 30px;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.product-images-lightbox .product-images-large {
+    position: relative;
+    margin: 0 auto;
+    width: fit-content;
+}
+.product-images-lightbox .product-images-large img{
+    width: 400px;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: calc(30% - 145px);
+    right: calc(50% - 205px);
+    cursor: pointer;
+}
+.close-lightbox img {
+    width: 16px;
+}
+
+.product-images-lightbox .icon-select {
+    top: calc(50% - 30px);
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+}
+.product-images-lightbox .next {
+    padding: 10px 0 8px 14px;
+    right: calc(50% - 220px);
+}
+.product-images-lightbox .previous {
+    padding: 10px 0 8px 11px;
+    left: calc(50% - 220px);
+}
+.product-images-lightbox .icon-select img{
+    width: 10px;
+    height: 14px;
+}
+
 
 .product-info-container {
     width: 90%;
@@ -114,5 +172,8 @@ main {
     display: none;
 }
 .burguer-menu {
+    display: none;
+}
+.inactive {
     display: none;
 }
