@@ -29,7 +29,11 @@
             <img src="./images/icon-cart.svg" alt="cart" class="cart">
             <img src="./images/image-avatar.png" alt="avatar" class="avatar-img">
         </div>
-        <div class="background-navbar inactive">
+        <div class="cart-box inactive">
+            <h3>Cart</h3>
+            <p>Your cart is empty.</p>
+        </div>
+        <div class="background-navbar-mobile inactive">
             <div class="navbar-menu-mobile">
                 <img src="./images/icon-close.svg" alt="icon-close" class="close-menu-mobile">
                 <ul class="navbar-items">
@@ -57,7 +61,7 @@
             </div>
 
             <div class="product-images-lightbox inactive">
-                <div class="close-lightbox"><img src="./images/icon-close.svg" alt="close"></div>
+                <div class="close-lightbox"><img src="./images/icon-close-desktop.svg" alt="close"></div>
                 <div class="product-images-large">
                     <img src="./images/image-product-1.jpg" alt="shoes-image">
                     
@@ -73,14 +77,16 @@
             </div>
         </section>
         <section class="product-images-carousel-container">
-            <div class="product-images-carousel">
-                <img src="./images/image-product-1.jpg" alt="shoes-image" class="shoes-img shoes-1">
-                <img src="./images/image-product-2.jpg" alt="shoes-image" class="shoes-img">
-                <img src="./images/image-product-3.jpg" alt="shoes-image" class="shoes-img">
-                <img src="./images/image-product-4.jpg" alt="shoes-image" class="shoes-img">
+            <div class="carousel-viewport">
+                <div class="product-images-carousel">
+                    <img src="./images/image-product-1.jpg" alt="shoes-image" class="shoes-img shoes-1">
+                    <img src="./images/image-product-2.jpg" alt="shoes-image" class="shoes-img">
+                    <img src="./images/image-product-3.jpg" alt="shoes-image" class="shoes-img">
+                    <img src="./images/image-product-4.jpg" alt="shoes-image" class="shoes-img">
+                </div>
             </div>
-            <div class="icon-select previous"><img src="./images/icon-previous.svg" alt="previous"></div>
-            <div class="icon-select next"><img src="./images/icon-next.svg" alt="next"></div>
+            <div id="prevBtn-mobile" class="icon-select previous"><img src="./images/icon-previous.svg" alt="previous"></div>
+            <div id="nextBtn-mobile" class="icon-select next"><img src="./images/icon-next.svg" alt="next"></div>
         </section>
         <section class="product-info-container">
             <div class="product-info">
@@ -106,5 +112,7 @@
             </div>
         </section>
     </main>
+
+    <script src="./main.js"></script>
 </body>
 </html>

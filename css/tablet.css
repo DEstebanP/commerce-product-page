@@ -1,3 +1,8 @@
+.cart-box {
+    width: 320px;
+    right: 6%;
+    left: auto;
+}
 
 .product-images-carousel-container {
     border-radius: 12px;
