@@ -28,6 +28,9 @@
         <div class="navbar-right">
             <img src="./images/icon-cart.svg" alt="cart" class="cart">
             <img src="./images/image-avatar.png" alt="avatar" class="avatar-img">
+            <div class="number-cart inactive">
+                <span>3</span>
+            </div>
         </div>
         <div class="cart-box inactive">
             <h3>Cart</h3>
@@ -101,9 +104,9 @@
             </div>
             <div class="product-cart">
                 <div class="cart-count">
-                    <img src="./images/icon-minus.svg" alt="minus">
-                    <span>0</span>
-                    <img src="./images/icon-plus.svg" alt="plus">
+                    <div id="minus-cart"><img src="./images/icon-minus.svg" alt="minus"></div>
+                    <span id="cart-count-number">0</span>
+                    <div id="plus-cart"><img src="./images/icon-plus.svg" alt="plus"></div>
                 </div>
                 <button class="cart-btn">
                     <img src="./images/icon-cart-btn.svg" alt="icon-cart" class="cart-icon">
