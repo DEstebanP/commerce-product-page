@@ -42,6 +42,7 @@ nav {
 
 .navbar-right {
     display: flex;
+    position: relative;
     align-items: center;
     column-gap: 12px;
 }
@@ -51,8 +52,8 @@ nav {
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 18px;
-    right: 74px;
+    top: 0;
+    right: 38px;
     width: 16px;
     height: 12px;
     background-color: var(--main-color);
@@ -99,13 +100,14 @@ nav {
 /* Cart box */
 .cart-box {
     display: grid;
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: 1fr 3fr;
     align-items: center;
     position: absolute;
     top: 72px;
     left: calc(50% - 150px);
     width: 300px;
     min-height: 230px;
+    padding-bottom: 20px;
     background-color: var(--white);
     border-radius: 8px;
     box-shadow: 4px 3px 8px rgba(0, 0, 0, 0.2);;
@@ -126,6 +128,43 @@ nav {
     justify-self: center;
 }
 
+.product-in-cart {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    column-gap: 8px;
+    width: 90%;
+    margin: 0 auto;
+}
+.product-in-cart img {
+    width: 50px;
+    grid-row: 1 / 3;
+    border-radius: 6px;
+}
+.product-in-cart :nth-child(3) {
+    align-self: self-start;
+    grid-row: 2 / 3
+}
+.product-in-cart p {
+    font-weight: 400;
+    justify-self: start;
+}
+.product-in-cart .total-price {
+    color: var(--main-title-color);
+    font-weight: 700;
+}
+.product-in-cart .delete-icon {
+    width: 16px;
+    cursor: pointer;
+}
+.cart-box .checkout-btn {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+
+
 /* Main */
 main, .product-images{
     width: 100%;
@@ -141,6 +180,7 @@ main, .product-images{
     width: 100%;
     height: 280px;
     overflow-y: hidden;
+    z-index: -1;
 }
 .carousel-viewport {
     display: flex;
@@ -267,7 +307,7 @@ main, .product-images{
     cursor: pointer;
 }
 
-.cart-btn {
+.cart-btn, .btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -279,6 +319,7 @@ main, .product-images{
     border: none;
     background-color: var(--main-color);
     border-radius: 6px;
+    cursor: pointer;
 }
 .cart-btn img {
     margin-right: 16px;

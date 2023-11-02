@@ -10,6 +10,9 @@ const plusCart = document.getElementById('plus-cart');
 const numberCart = document.querySelector('.number-cart');
 const numberCartSpan = document.querySelector('.number-cart span');
 
+const cartBox = document.querySelector('.cart-box');
+const addToCartBtn = document.querySelector('.cart-btn');
+
 //Carousel elements
 const prevBtn = document.getElementById('prevBtn-mobile');
 const nextBtn = document.getElementById('nextBtn-mobile');
@@ -22,6 +25,7 @@ closeMenuMobile.addEventListener('click', toggleMenuMobile);
 cartIcon.addEventListener('click', toggleCartContainer);
 minusCart.addEventListener('click', minusCartCount);
 plusCart.addEventListener('click', plusCartCount);
+addToCartBtn.addEventListener('click', addProductToCart);
 
 
 /* const imageWidth = carouselImages[0].clientWidth;
@@ -53,7 +57,7 @@ function toggleCartContainer() {
 }
 
 function minusCartCount() {
-    if(Number(countCart.innerText) !== 0) {
+    if(Number(countCart.innerText) !== 1) {
         const newNumber = Number(countCart.innerText) - 1;
         countCart.innerText = newNumber;
     }
@@ -61,4 +65,58 @@ function minusCartCount() {
 function plusCartCount() {
     const newNumber = Number(countCart.innerText) + 1;
     countCart.innerText = newNumber;
+}
+
+{/* <div class="product-in-cart">
+        <img src="./images/image-product-3-thumbnail.jpg" alt="">
+        <p>Fall Limited Edition Sneakers</p>
+        p>$125.00 x <span>3</span> <span class="total-price">$375.00</span></p>
+        <img class="delete-icon" src="./images/icon-delete.svg" alt="delete">
+    </div>
+    <button class="checkout-btn btn">Checkout</button> */}
+function addProductToCart() {
+    // !Delete cart-box text
+    cartBox.removeChild(cartBox.children[1]);
+
+    const productPrice = 125.00;
+
+    // layout the cart product
+    const productContainer = document.createElement('div');
+    productContainer.classList.add('product-in-cart');
+
+    const productImg = document.createElement('img');
+    productImg.src = './images/image-product-1-thumbnail.jpg';
+
+    const pText = document.createElement('p');
+    pText.innerText = "Fall Limited Edition Sneakers";
+
+    const spanNumber = document.createElement('span');
+    spanNumber.innerText = countCart.innerText
+    const spanTotalPrice = document.createElement('span');
+    spanTotalPrice.classList.add('total-price');
+    spanTotalPrice.innerText = "$" + (productPrice * Number(spanNumber.innerText)).toFixed(2);
+    const pInfo = document.createElement('p');
+    pInfo.appendChild(document.createTextNode("$125.00 x "));
+    pInfo.appendChild(spanNumber);
+    pInfo.appendChild(document.createTextNode(" "));
+    pInfo.appendChild(spanTotalPrice);
+
+    const deleteIcon = document.createElement('img');
+    deleteIcon.classList.add('delete-icon');
+    deleteIcon.src = './images/icon-delete.svg';
+
+    deleteIcon.addEventListener("click", removeProductCart);
+
+    productContainer.append(productImg, pText, pInfo, deleteIcon);
+    cartBox.appendChild(productContainer);
+}
+
+function removeProductCart() {
+    while (cartBox.children[1]) {
+        cartBox.removeChild(cartBox.children[1]);
+    }
+    const pCart = document.createElement('p');
+    pCart.innerText = "Your cart is empty."
+
+    cartBox.children[0].insertAdjacentElement("afterend", pCart)
 }
