@@ -13,6 +13,12 @@ const numberCartSpan = document.querySelector('.number-cart span');
 const cartBox = document.querySelector('.cart-box');
 const addToCartBtn = document.querySelector('.cart-btn');
 
+const productLargeImg = document.querySelectorAll(".product-large-img");
+const productThumbs = document.querySelectorAll(".product-images-thumbnails img");
+
+const productsLightbox = document.querySelector(".product-images-lightbox");
+const closeLightbox = document.querySelector(".close-lightbox");
+
 //Carousel elements
 const prevBtn = document.getElementById('prevBtn-mobile');
 const nextBtn = document.getElementById('nextBtn-mobile');
@@ -26,7 +32,8 @@ cartIcon.addEventListener('click', toggleCartContainer);
 minusCart.addEventListener('click', minusCartCount);
 plusCart.addEventListener('click', plusCartCount);
 addToCartBtn.addEventListener('click', addProductToCart);
-
+productLargeImg[0].addEventListener('click', () => productsLightbox.classList.remove("inactive"));
+closeLightbox.addEventListener("click", () => productsLightbox.classList.add("inactive"));
 
 /* const imageWidth = carouselImages[0].clientWidth;
 let currentIndex = 0;
@@ -55,7 +62,6 @@ function toggleMenuMobile() {
 function toggleCartContainer() {
     cartContainer.classList.toggle('inactive');
 }
-
 function minusCartCount() {
     if(Number(countCart.innerText) !== 1) {
         const newNumber = Number(countCart.innerText) - 1;
@@ -67,13 +73,6 @@ function plusCartCount() {
     countCart.innerText = newNumber;
 }
 
-{/* <div class="product-in-cart">
-        <img src="./images/image-product-3-thumbnail.jpg" alt="">
-        <p>Fall Limited Edition Sneakers</p>
-        p>$125.00 x <span>3</span> <span class="total-price">$375.00</span></p>
-        <img class="delete-icon" src="./images/icon-delete.svg" alt="delete">
-    </div>
-    <button class="checkout-btn btn">Checkout</button> */}
 function addProductToCart() {
     // !Delete cart-box text
     cartBox.removeChild(cartBox.children[1]);
@@ -109,6 +108,10 @@ function addProductToCart() {
 
     productContainer.append(productImg, pText, pInfo, deleteIcon);
     cartBox.appendChild(productContainer);
+
+    //change cart number
+    numberCart.innerText = spanNumber.innerText;
+    if (numberCart.classList.contains('inactive')) {numberCart.classList.remove('inactive');}
 }
 
 function removeProductCart() {
@@ -118,5 +121,49 @@ function removeProductCart() {
     const pCart = document.createElement('p');
     pCart.innerText = "Your cart is empty."
 
-    cartBox.children[0].insertAdjacentElement("afterend", pCart)
+    //Change cart number
+    if (!cartBox.children[1] && !numberCart.classList.contains('inactive')) {
+        numberCart.classList.add('inactive')
+    }
+    
+    cartBox.children[0].insertAdjacentElement("afterend", pCart);
+}
+
+//change image desktop
+function thumbnailStyles(element) {
+    for (const thumbnail of productThumbs) {
+        thumbnail.addEventListener("click", changeProductImage);
+        thumbnail.style.opacity = "100%"
+        thumbnail.parentNode.style.border = "none"
+    }
+    if (element) {
+        element.style.opacity = "50%";
+        element.parentNode.style.border = "3px solid hsl(26, 100%, 55%)";
+    }
+}
+thumbnailStyles("");
+productThumbs[0].style.opacity = "50%";
+productThumbs[0].parentNode.style.border = "3px solid hsl(26, 100%, 55%)"
+function changeProductImage(event) {
+    let largeImage;
+    if (productsLightbox.classList.contains("inactive")) {
+        largeImage = productLargeImg[0]
+    } else {
+        largeImage= productLargeImg[1]
+    }
+
+    if (event.target.classList.contains("1")) {
+        largeImage.src = "./images/image-product-1.jpg"
+        thumbnailStyles(event.target);
+    } else if (event.target.classList.contains("2")) {
+        largeImage.src = "./images/image-product-2.jpg"
+        thumbnailStyles(event.target);
+    } else if (event.target.classList.contains("3")) {
+        largeImage.src = "./images/image-product-3.jpg"
+        thumbnailStyles(event.target);
+    } else if (event.target.classList.contains("4")) {
+        largeImage.src = "./images/image-product-4.jpg"
+        thumbnailStyles(event.target);
+    }
+    
 }
