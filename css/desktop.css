@@ -114,11 +114,6 @@ main {
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
 }
-.product-images-lightbox .product-images-large {
-    position: relative;
-    margin: 0 auto;
-    width: fit-content;
-}
 .product-images-lightbox .product-images-large img{
     width: 400px;
 }
@@ -152,6 +147,18 @@ main {
     height: 14px;
 }
 
+/* Carousel lightbox */
+.carousel-lightbox-viewport {
+    position: relative;
+    width: 400px;
+    overflow: hidden;
+    margin: 0 auto;
+    transition: scroll 0.3s ease;
+}
+.product-lightbox-carousel {
+    display: flex;
+    width: 400px;
+}
 
 .product-info-container {
     width: 90%;

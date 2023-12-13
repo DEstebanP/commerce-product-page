@@ -19,6 +19,11 @@ const productThumbs = document.querySelectorAll(".product-images-thumbnails img"
 const productsLightbox = document.querySelector(".product-images-lightbox");
 const closeLightbox = document.querySelector(".close-lightbox");
 
+//Carousel elements lightbox 
+const prevBtnDesk = document.getElementById('prevBtn-desktop');
+const nextBtnDesk = document.getElementById('nextBtn-desktop');
+const carouselImagesDesk = document.querySelectorAll('.product-lightbox-carousel img')
+
 //Carousel elements
 const prevBtn = document.getElementById('prevBtn-mobile');
 const nextBtn = document.getElementById('nextBtn-mobile');
@@ -35,6 +40,8 @@ addToCartBtn.addEventListener('click', addProductToCart);
 productLargeImg[0].addEventListener('click', () => productsLightbox.classList.remove("inactive"));
 closeLightbox.addEventListener("click", () => productsLightbox.classList.add("inactive"));
 
+prevBtnDesk.addEventListener("click", prevImgCarousel);
+nextBtnDesk.addEventListener("click", nextImgCarousel);
 /* const imageWidth = carouselImages[0].clientWidth;
 let currentIndex = 0;
 
@@ -51,6 +58,23 @@ function updateCarousel() {
     const offset = currentIndex * imageWidth;
     carouselViewport.scrollLeft = offset;
 } */
+
+const imageWidth = carouselImagesDesk[0].clientWidth;
+let currentIndex = 0;
+
+function prevImgCarousel() {
+    console.log('AAAAAAAAAAAA');
+    currentIndex = (currentIndex - 1 + carouselImagesDesk.length) % carouselImagesDesk.length;
+    updateCarousel();
+};
+function nextImgCarousel() {
+    currentIndex = (currentIndex + 1) % carouselImagesDesk.length;
+    updateCarousel();
+};
+function updateCarousel() {
+    const offset = -currentIndex * 100;
+    carouselImagesDesk[0].parentNode.parentNode.style.transform = `translateX(${offset}%)`
+}
 
 function toggleMenuMobile() {
     menuMobile.classList.toggle('inactive');
